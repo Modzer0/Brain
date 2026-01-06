@@ -29,4 +29,11 @@
     <PackageReference Include="System.Windows.Forms" Version="4.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Configuration files -->
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

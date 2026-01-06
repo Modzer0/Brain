@@ -10,3 +10,4 @@
 /Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/refint/NeuralBrainInterface.Core.dll
 /Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.pdb
 /Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/ref/NeuralBrainInterface.Core.dll
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.sourcelink.json

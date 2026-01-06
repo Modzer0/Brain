@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NeuralBrainInterface.UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5885f275472641598a96e30c12da99e2069a4904")]
 [assembly: System.Reflection.AssemblyProductAttribute("NeuralBrainInterface.UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NeuralBrainInterface.UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

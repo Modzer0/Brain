@@ -90,3 +90,6 @@
 /Users/hound/git/Brain/src/NeuralBrainInterface.UI/obj/Debug/net8.0-windows/NeuralBrainInterface.UI.pdb
 /Users/hound/git/Brain/src/NeuralBrainInterface.UI/obj/Debug/net8.0-windows/NeuralBrainInterface.UI.genruntimeconfig.cache
 /Users/hound/git/Brain/src/NeuralBrainInterface.UI/obj/Debug/net8.0-windows/ref/NeuralBrainInterface.UI.dll
+/Users/hound/git/Brain/src/NeuralBrainInterface.UI/bin/Debug/net8.0-windows/appsettings.json
+/Users/hound/git/Brain/src/NeuralBrainInterface.UI/obj/Debug/net8.0-windows/NeuralBrainInterface.UI_Content.g.cs
+/Users/hound/git/Brain/src/NeuralBrainInterface.UI/obj/Debug/net8.0-windows/NeuralBrainInterface.UI.sourcelink.json
