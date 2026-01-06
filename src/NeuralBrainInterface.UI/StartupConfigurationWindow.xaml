@@ -1,0 +1,325 @@
+<Window x:Class="NeuralBrainInterface.UI.StartupConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Neural Brain Interface - Startup Configuration"
+        Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#1e1e1e"
+        Foreground="White">
+    
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#555555"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        
+        <Style TargetType="Slider">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="#333333"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#555555"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Neural Brain Interface" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock Text="Configure system resources and device settings for optimal performance" 
+                      FontSize="14" HorizontalAlignment="Center" Margin="0,5,0,0" Opacity="0.8"/>
+        </StackPanel>
+        
+        <!-- Configuration Tabs -->
+        <TabControl Grid.Row="1" Name="ConfigurationTabs" Background="#2d2d2d" BorderBrush="#555555">
+            
+            <!-- Resource Configuration Tab -->
+            <TabItem Header="System Resources" Background="#2d2d2d" Foreground="White">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="System Resource Allocation" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+                        
+                        <!-- Available Resources Display -->
+                        <Border Background="#333333" Padding="15" Margin="0,0,0,20" CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="Available System Resources:" FontWeight="Bold" Margin="0,0,0,10"/>
+                                <TextBlock Name="AvailableResourcesText" Text="Detecting system resources..." Opacity="0.8"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Memory Configuration -->
+                        <GroupBox Header="Memory Allocation" Foreground="White" Margin="0,0,0,15">
+                            <StackPanel Margin="10">
+                                <Label Content="Active Memory (MB):"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Slider Name="MemorySlider" Grid.Column="0" Minimum="512" Maximum="8192" 
+                                           Value="2048" TickFrequency="512" IsSnapToTickEnabled="True"
+                                           ValueChanged="MemorySlider_ValueChanged"/>
+                                    <TextBlock Name="MemoryValueText" Grid.Column="1" Text="2048 MB" 
+                                              VerticalAlignment="Center" Margin="10,0,0,0" MinWidth="80"/>
+                                </Grid>
+                                <TextBlock Text="Recommended: 2048-4096 MB for optimal performance" 
+                                          Opacity="0.7" FontSize="10" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <!-- CPU Configuration -->
+                        <GroupBox Header="CPU Allocation" Foreground="White" Margin="0,0,0,15">
+                            <StackPanel Margin="10">
+                                <Label Content="CPU Cores:"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Slider Name="CpuSlider" Grid.Column="0" Minimum="1" Maximum="16" 
+                                           Value="4" TickFrequency="1" IsSnapToTickEnabled="True"
+                                           ValueChanged="CpuSlider_ValueChanged"/>
+                                    <TextBlock Name="CpuValueText" Grid.Column="1" Text="4 cores" 
+                                              VerticalAlignment="Center" Margin="10,0,0,0" MinWidth="80"/>
+                                </Grid>
+                                <TextBlock Text="Leave some cores available for system operations" 
+                                          Opacity="0.7" FontSize="10" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <!-- GPU Configuration -->
+                        <GroupBox Header="GPU Allocation" Foreground="White" Margin="0,0,0,15">
+                            <StackPanel Margin="10">
+                                <Label Content="GPU Cores:"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Slider Name="GpuSlider" Grid.Column="0" Minimum="0" Maximum="4" 
+                                           Value="1" TickFrequency="1" IsSnapToTickEnabled="True"
+                                           ValueChanged="GpuSlider_ValueChanged"/>
+                                    <TextBlock Name="GpuValueText" Grid.Column="1" Text="1 core" 
+                                              VerticalAlignment="Center" Margin="10,0,0,0" MinWidth="80"/>
+                                </Grid>
+                                <TextBlock Text="Set to 0 if no dedicated GPU is available" 
+                                          Opacity="0.7" FontSize="10" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <!-- Performance Settings -->
+                        <GroupBox Header="Performance Settings" Foreground="White">
+                            <StackPanel Margin="10">
+                                <Label Content="Visualization Frame Rate (FPS):"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Slider Name="FpsSlider" Grid.Column="0" Minimum="15" Maximum="120" 
+                                           Value="60" TickFrequency="15" IsSnapToTickEnabled="True"
+                                           ValueChanged="FpsSlider_ValueChanged"/>
+                                    <TextBlock Name="FpsValueText" Grid.Column="1" Text="60 FPS" 
+                                              VerticalAlignment="Center" Margin="10,0,0,0" MinWidth="80"/>
+                                </Grid>
+                                
+                                <Label Content="Max Processing Time (ms):" Margin="0,10,0,0"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Slider Name="ProcessingTimeSlider" Grid.Column="0" Minimum="1000" Maximum="10000" 
+                                           Value="5000" TickFrequency="1000" IsSnapToTickEnabled="True"
+                                           ValueChanged="ProcessingTimeSlider_ValueChanged"/>
+                                    <TextBlock Name="ProcessingTimeValueText" Grid.Column="1" Text="5000 ms" 
+                                              VerticalAlignment="Center" Margin="10,0,0,0" MinWidth="80"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            
+            <!-- Device Configuration Tab -->
+            <TabItem Header="Hardware Devices" Background="#2d2d2d" Foreground="White">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Hardware Device Configuration" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+                        
+                        <!-- Device Permissions -->
+                        <Border Background="#333333" Padding="15" Margin="0,0,0,20" CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="Device Permissions:" FontWeight="Bold" Margin="0,0,0,10"/>
+                                <TextBlock Text="The application will request permissions for audio and video devices during startup." 
+                                          Opacity="0.8" TextWrapping="Wrap"/>
+                                <Button Name="RequestPermissionsButton" Content="Request Permissions Now" 
+                                       HorizontalAlignment="Left" Margin="0,10,0,0" Click="RequestPermissionsButton_Click"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Audio Settings -->
+                        <GroupBox Header="Audio Configuration" Foreground="White" Margin="0,0,0,15">
+                            <StackPanel Margin="10">
+                                <CheckBox Name="EnableMicrophoneCheckBox" Content="Enable Microphone on Startup" 
+                                         IsChecked="False" Margin="0,0,0,10"/>
+                                <CheckBox Name="EnableSpeakerCheckBox" Content="Enable Speaker Output on Startup" 
+                                         IsChecked="True" Margin="0,0,0,15"/>
+                                
+                                <Label Content="Audio Quality:"/>
+                                <ComboBox Name="AudioQualityComboBox" SelectedIndex="1" Margin="0,0,0,10">
+                                    <ComboBoxItem Content="Low (22kHz, 8-bit)"/>
+                                    <ComboBoxItem Content="Standard (44kHz, 16-bit)"/>
+                                    <ComboBoxItem Content="High (48kHz, 24-bit)"/>
+                                </ComboBox>
+                                
+                                <CheckBox Name="NoiseReductionCheckBox" Content="Enable Noise Reduction" 
+                                         IsChecked="True"/>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <!-- Video Settings -->
+                        <GroupBox Header="Video Configuration" Foreground="White" Margin="0,0,0,15">
+                            <StackPanel Margin="10">
+                                <CheckBox Name="EnableWebcamCheckBox" Content="Enable Webcam on Startup" 
+                                         IsChecked="False" Margin="0,0,0,15"/>
+                                
+                                <Label Content="Video Resolution:"/>
+                                <ComboBox Name="VideoResolutionComboBox" SelectedIndex="1" Margin="0,0,0,10">
+                                    <ComboBoxItem Content="640x480 (VGA)"/>
+                                    <ComboBoxItem Content="1280x720 (HD)"/>
+                                    <ComboBoxItem Content="1920x1080 (Full HD)"/>
+                                </ComboBox>
+                                
+                                <Label Content="Frame Rate:"/>
+                                <ComboBox Name="VideoFrameRateComboBox" SelectedIndex="1" Margin="0,0,0,10">
+                                    <ComboBoxItem Content="15 FPS"/>
+                                    <ComboBoxItem Content="30 FPS"/>
+                                    <ComboBoxItem Content="60 FPS"/>
+                                </ComboBox>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <!-- Privacy Settings -->
+                        <GroupBox Header="Privacy &amp; Security" Foreground="White">
+                            <StackPanel Margin="10">
+                                <CheckBox Name="SaveDevicePreferencesCheckBox" Content="Remember device preferences" 
+                                         IsChecked="True" Margin="0,0,0,10"/>
+                                <CheckBox Name="ShowDeviceIndicatorsCheckBox" Content="Show device activity indicators" 
+                                         IsChecked="True" Margin="0,0,0,10"/>
+                                <TextBlock Text="Device permissions can be changed at any time through the main interface." 
+                                          Opacity="0.7" FontSize="10" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            
+            <!-- File Format Tab -->
+            <TabItem Header="File Formats" Background="#2d2d2d" Foreground="White">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="File Format Support" FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+                        
+                        <!-- Supported Formats Display -->
+                        <Border Background="#333333" Padding="15" Margin="0,0,0,20" CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="Supported File Formats:" FontWeight="Bold" Margin="0,0,0,10"/>
+                                <TextBlock Name="SupportedFormatsText" Text="Loading format information..." 
+                                          Opacity="0.8" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Format Validation Settings -->
+                        <GroupBox Header="File Processing Options" Foreground="White" Margin="0,0,0,15">
+                            <StackPanel Margin="10">
+                                <CheckBox Name="ValidateFileIntegrityCheckBox" Content="Validate file integrity before processing" 
+                                         IsChecked="True" Margin="0,0,0,10"/>
+                                <CheckBox Name="EnableFormatConversionCheckBox" Content="Enable automatic format conversion" 
+                                         IsChecked="True" Margin="0,0,0,10"/>
+                                <CheckBox Name="ShowFormatWarningsCheckBox" Content="Show warnings for unsupported formats" 
+                                         IsChecked="True" Margin="0,0,0,10"/>
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <!-- Storage Settings -->
+                        <GroupBox Header="File Storage" Foreground="White">
+                            <StackPanel Margin="10">
+                                <Label Content="Data Directory:"/>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="DataDirectoryTextBox" Grid.Column="0" Text="Data" 
+                                            Background="#333333" Foreground="White" BorderBrush="#555555"/>
+                                    <Button Name="BrowseDataDirectoryButton" Grid.Column="1" Content="Browse..." 
+                                           Click="BrowseDataDirectoryButton_Click"/>
+                                </Grid>
+                                
+                                <Label Content="Brain Files Directory:"/>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="BrainFilesDirectoryTextBox" Grid.Column="0" Text="BrainFiles" 
+                                            Background="#333333" Foreground="White" BorderBrush="#555555"/>
+                                    <Button Name="BrowseBrainFilesDirectoryButton" Grid.Column="1" Content="Browse..." 
+                                           Click="BrowseBrainFilesDirectoryButton_Click"/>
+                                </Grid>
+                                
+                                <Label Content="Memory Directory:"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="MemoryDirectoryTextBox" Grid.Column="0" Text="Memory" 
+                                            Background="#333333" Foreground="White" BorderBrush="#555555"/>
+                                    <Button Name="BrowseMemoryDirectoryButton" Grid.Column="1" Content="Browse..." 
+                                           Click="BrowseMemoryDirectoryButton_Click"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        
+        <!-- Action Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Name="ResetToDefaultsButton" Content="Reset to Defaults" Click="ResetToDefaultsButton_Click"/>
+            <Button Name="SaveConfigurationButton" Content="Save Configuration" Click="SaveConfigurationButton_Click"/>
+            <Button Name="CancelButton" Content="Cancel" Click="CancelButton_Click"/>
+            <Button Name="StartApplicationButton" Content="Start Application" Click="StartApplicationButton_Click" 
+                   Background="#0078d4" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>

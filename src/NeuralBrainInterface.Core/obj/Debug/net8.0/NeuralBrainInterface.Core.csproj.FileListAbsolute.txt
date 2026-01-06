@@ -1,0 +1,12 @@
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/bin/Debug/net8.0/NeuralBrainInterface.Core.deps.json
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/bin/Debug/net8.0/NeuralBrainInterface.Core.dll
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/bin/Debug/net8.0/NeuralBrainInterface.Core.pdb
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.csproj.AssemblyReference.cache
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.AssemblyInfoInputs.cache
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.AssemblyInfo.cs
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.csproj.CoreCompileInputs.cache
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.dll
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/refint/NeuralBrainInterface.Core.dll
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/NeuralBrainInterface.Core.pdb
+/Users/hound/git/Brain/src/NeuralBrainInterface.Core/obj/Debug/net8.0/ref/NeuralBrainInterface.Core.dll
